@@ -1,4 +1,9 @@
 # Byte-compiled / optimized / DLL files
+
+# Ignoring Migrations and .idea
+**/migrations
+.idea
+.idea/
 __pycache__/
 *.py[cod]
 *$py.class
