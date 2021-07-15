@@ -53,7 +53,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.RelatedField(queryset=User.objects.filter(is_superuser=False))
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.filter(is_superuser=False))
 
     class Meta:
         model = Post
