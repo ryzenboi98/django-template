@@ -1,4 +1,5 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
+from api.models import Post
 from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
@@ -49,3 +50,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+
+
+class PostSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.RelatedField(queryset=User.objects.filter(is_superuser=False))
+
+    class Meta:
+        model = Post
+        fields = ['url', 'title', 'description', 'user', 'created_at', 'updated_at']
